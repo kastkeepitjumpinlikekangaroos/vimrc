@@ -1,5 +1,7 @@
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
@@ -8,6 +10,8 @@ Plug 'tpope/vim-dadbod'
 Plug 'jcherven/jummidark.vim'
 call plug#end()
 
+" map fuzzfilefinder to ctrl+p
+nnoremap <C-p> :GFiles<CR>
 
 syntax on
 " fuzzy file finding
@@ -18,6 +22,17 @@ set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 " make backspace work properly
 set backspace=indent,eol,start
 
+" map nerd tree to ctrl + x
+map <C-x> :NERDTreeToggle<CR>
+" add line numbers
+set number
+set relativenumber
+" nice ass color scheme
+colorscheme jummidark
+" killer remap
+nnoremap ; :
+" killer search oh boy
+set incsearch
 
 " COC stuff
 " TextEdit might fail if hidden is not set.
@@ -171,17 +186,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " done COC stuff
 
-" map nerd tree to ctrl + x
-map <C-x> :NERDTreeToggle<CR>
-" add line numbers
-set number
-" nice ass color scheme
-colorscheme jummidark
-" killer remap
-nnoremap ; :
-" killer search oh boy
-set incsearch
-
+" gotags
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
     \ 'kinds'     : [
