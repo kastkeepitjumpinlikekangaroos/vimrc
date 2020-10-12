@@ -14,6 +14,9 @@ call plug#end()
 " map fuzzfilefinder to ctrl+p
 nnoremap <C-p> :GFiles<CR>
 
+let mapleader = " "
+nnoremap <leader>u :UndotreeShow<CR>
+
 syntax on
 " fuzzy file finding
 set path+=**
