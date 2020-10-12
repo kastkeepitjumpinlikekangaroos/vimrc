@@ -18,10 +18,16 @@ syntax on
 set path+=**
 set wildmenu
 " make tabs and spaces not dumb as fuck
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smartindent
 " make backspace work properly
 set backspace=indent,eol,start
 
+set nowrap
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+set noerrorbells
 " map nerd tree to ctrl + x
 map <C-x> :NERDTreeToggle<CR>
 " add line numbers
