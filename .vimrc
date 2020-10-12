@@ -35,8 +35,6 @@ set number
 set relativenumber
 " nice ass color scheme
 colorscheme jummidark
-" killer remap
-nnoremap ; :
 " killer search oh boy
 set incsearch
 
