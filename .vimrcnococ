@@ -1,0 +1,42 @@
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
+Plug 'mbbill/undotree'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-dadbod'
+Plug 'jcherven/jummidark.vim'
+call plug#end()
+
+" map fuzzfilefinder to ctrl+p
+nnoremap <C-p> :GFiles<CR>
+
+let mapleader = " "
+nnoremap <leader>u :UndotreeShow<CR>
+
+syntax on
+" fuzzy file finding
+set path+=**
+set wildmenu
+" make tabs and spaces not dumb as fuck
+set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smartindent
+" make backspace work properly
+set backspace=indent,eol,start
+
+set nowrap
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+set noerrorbells
+" map nerd tree to ctrl + x
+map <C-x> :NERDTreeToggle<CR>
+" add line numbers
+set number
+set relativenumber
+" nice ass color scheme
+colorscheme jummidark
+" killer search oh boy
+set incsearch
