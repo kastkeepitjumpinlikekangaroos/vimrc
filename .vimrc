@@ -7,7 +7,6 @@ Plug 'mbbill/undotree'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-dadbod'
 Plug 'jcherven/jummidark.vim'
 call plug#end()
 
