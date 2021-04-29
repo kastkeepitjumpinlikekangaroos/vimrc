@@ -33,6 +33,7 @@ set undofile
 set noerrorbells
 " map nerd tree to ctrl + x
 map <C-x> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 " add line numbers
 set number
 set relativenumber
