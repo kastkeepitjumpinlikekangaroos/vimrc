@@ -12,6 +12,9 @@ call plug#end()
 
 " map fuzzfilefinder to ctrl+p
 nnoremap <C-p> :GFiles<CR>
+" map format to ctrl+f
+nnoremap <C-f> :Format<CR>
+nnoremap Y y$
 
 let mapleader = " "
 nnoremap <leader>u :UndotreeShow<CR>
@@ -33,6 +36,7 @@ set undofile
 set noerrorbells
 " map nerd tree to ctrl + x
 map <C-x> :NERDTreeToggle<CR>
+" show hidden files
 let NERDTreeShowHidden=1
 " add line numbers
 set number
