@@ -28,7 +28,7 @@ vim.o.backspace = 'indent,eol,start'
 vim.o.wrap = false
 vim.o.swapfile = false
 vim.o.backup = false
-vim.o.undodir = '~/.vim/undodir'
+vim.o.undodir = '/Users/owenchristie/.config/nvim/undodir'
 vim.o.undofile = true
 vim.o.errorbells = false
 
@@ -43,7 +43,7 @@ vim.o.incsearch = true
 vim.keymap.set('n', 'Y', 'y$')
 
 -- nice color scheme
-vim.cmd('colorscheme jummidark')
+vim.cmd('colorscheme catppuccin')
 
 -- https://raw.githubusercontent.com/neoclide/coc.nvim/master/doc/coc-example-config.lua
 
@@ -245,8 +245,7 @@ return require('packer').startup(function(use)
   use 'tpope/vim-repeat'
   
   -- Colorscheme
-  use 'jcherven/jummidark.vim'
-
+  use { "catppuccin/nvim", as = "catppuccin" }
 
 end)
 
