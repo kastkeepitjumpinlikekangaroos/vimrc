@@ -198,6 +198,39 @@ vim.api.nvim_create_user_command("Fold", "call CocAction('fold', <f-args>)", {na
 -- Add `:OR` command for organize imports of the current buffer
 vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
 
+-- Add `:Bazel` command to run bazel build on the current file's directory
+vim.api.nvim_create_user_command("BazelBuild", function()
+    local dirname = vim.fn.expand('%:h')
+    vim.cmd('split | terminal bazel build ' .. vim.fn.shellescape(dirname))
+end, {})
+
+local function filepath_to_bazel_target(filepath)
+  -- Remove file extension (everything after the last dot)
+  local path_without_ext = filepath:gsub("%.[^.]+$", "")
+
+  -- Split at the last slash to get directory and filename
+  local dir, filename = path_without_ext:match("^(.+)/([^/]+)$")
+
+  if dir and filename then
+      return "//" .. dir .. ":" .. filename
+  else
+      -- No directory, just filename
+      return "//:" .. path_without_ext
+  end
+end
+-- Add `:Bazel` command to run bazel test on the current file
+vim.api.nvim_create_user_command("BazelTest", function()
+    local filename = vim.fn.expand('%')
+    vim.cmd('split | terminal bazel test ' .. vim.fn.shellescape(filepath_to_bazel_target(filename)))
+    --vim.cmd('!bazel test ' .. vim.fn.shellescape(filename))
+end, {})
+
+-- Aliases for Bazel commands
+vim.api.nvim_create_user_command("BB", "BazelBuild", {})
+vim.api.nvim_create_user_command("BT", "BazelTest", {})
+
+vim.keymap.set('v', 'gf', 'y:e <C-r>"<CR>', { desc = 'Open visually selected text as file' })
+
 -- Add (Neo)Vim's native statusline support
 -- NOTE: Please see `:h coc-status` for integrations with external plugins that
 -- provide custom statusline: lightline.vim, vim-airline
